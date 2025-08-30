@@ -9,7 +9,7 @@
 ## Status Line
 ![Status Line Screenshot](screenshots/status-line.png)
 
-## Full
+## Full Screen
 ![Full Screen Screenshot](screenshots/tmux-full.png)
 
 ## ✨ Features
