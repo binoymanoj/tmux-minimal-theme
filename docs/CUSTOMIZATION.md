@@ -69,3 +69,14 @@ set -g pane-active-border-style "fg=#your-active-color,bold"
 set -g display-panes-colour "#your-inactive-color"
 set -g display-panes-active-colour "#your-active-color"
 ```
+
+### Clock Mode
+
+```bash
+# 12-hour format
+set -g clock-mode-style 12
+
+# Custom clock color
+set -g clock-mode-colour "#your-clock-color"
+```
+
