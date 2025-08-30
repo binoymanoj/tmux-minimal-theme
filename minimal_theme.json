@@ -1,0 +1,9 @@
+{
+	"name": "tmux-minimal-theme",
+	"version": "1.0.0",
+	"description": "A clean and minimal tmux theme with system monitoring",
+	"author": "Binoy Manoj",
+	"homepage": "https://github.com/binoymanoj/tmux-minimal-theme",
+	"keywords": ["tmux", "theme", "minimal", "statusline"],
+	"license": "MIT"
+}
