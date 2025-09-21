@@ -19,6 +19,12 @@ apply_minimal_theme() {
     local text_color=$(get_tmux_option "@minimal_theme_text_color" "#cdd6f4")
     local accent_color=$(get_tmux_option "@minimal_theme_accent_color" "#b4befe")
     local border_color=$(get_tmux_option "@minimal_theme_border_color" "#44475a")
+    local icon_session=$(get_tmux_option "@minimal_theme_session_icon" "")
+    local icon_dir=$(get_tmux_option "@minimal_theme_dir_icon" "")
+    local icon_memory=$(get_tmux_option "@minimal_theme_memory_icon" "")
+    local icon_date=$(get_tmux_option "@minimal_theme_date_icon" "")
+    local icon_clock=$(get_tmux_option "@minimal_theme_clock_icon" "")
+    local icon_battery=$(get_tmux_option "@minimal_theme_battery_icon" "")
 
     # Status bar setup
     tmux set-option -g status on
@@ -45,19 +51,19 @@ apply_minimal_theme() {
     tmux set-option -g window-status-separator ""
 
     # Status left (session name)
-    tmux set-option -g status-left "#[fg=$accent_color,bold]  #S #[fg=$inactive_color]│ "
+    tmux set-option -g status-left "#[fg=$accent_color,bold]$icon_session  #S #[fg=$inactive_color]│ "
 
     # Status right with system info
     local status_right="\
-#[fg=$accent_color] #[fg=$text_color]#([ #{pane_current_path} = \$HOME ] && echo '~' || basename #{pane_current_path}) \
+#[fg=$accent_color]$icon_dir #[fg=$text_color]#([ #{pane_current_path} = \$HOME ] && echo '~' || basename #{pane_current_path}) \
 #[fg=$inactive_color]│ \
-#[fg=$accent_color] #[fg=$text_color]#(free | awk '/^Mem/ { printf(\"%.0f%%\", \$3/\$2 * 100 - 0.5) }' ) \
+#[fg=$accent_color]$icon_memory #[fg=$text_color]#(free | awk '/^Mem/ { printf(\"%.0f%%\", \$3/\$2 * 100 - 0.5) }' ) \
 #[fg=$inactive_color]│ \
-#[fg=$accent_color] #[fg=$text_color]#(date +%d) \
+#[fg=$accent_color]$icon_date #[fg=$text_color]#(date +%d) \
 #[fg=$inactive_color]│ \
-#[fg=$accent_color] #[fg=$text_color]#(date +%H:%M) \
+#[fg=$accent_color]$icon_clock #[fg=$text_color]#(date +%H:%M) \
 #[fg=$inactive_color]│ \
-#[fg=$accent_color] #[fg=$text_color]#(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo 'N/A')% "
+#[fg=$accent_color]$icon_battery #[fg=$text_color]#(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo 'N/A')% "
 
     tmux set-option -g status-right "$status_right"
 
